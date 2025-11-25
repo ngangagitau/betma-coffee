@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Recipes | BETMA COFFEE - Artisanal Coffee Roasters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --dark-brown: #2E241F;
+            --cream: #F7F3EE;
+            --orange: #D46A2E;
+            --green: #8AA28B;
+            --gray: #6B7280;
+            --light-gray: #E5E7EB;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-brown);
+            background-color: var(--cream);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--cream);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-brown);
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-desktop {
+            display: flex;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--orange);
+        }
+
+        .nav-link.active {
+            color: var(--orange);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--orange);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--orange);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--cream);
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            padding: 80px 20px 20px;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-nav .nav-link {
+            font-size: 18px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            font-size: 24px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(46, 36, 31, 0.7), rgba(46, 36, 31, 0.7)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .breadcrumb a {
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--orange);
+        }
+
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Blog Layout */
+        .blog-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 50px;
+            padding: 60px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Blog Content */
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .blog-post {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .post-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .post-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--orange);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .post-content {
+            padding: 30px;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .post-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .post-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .post-excerpt {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--orange);
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .read-more:hover {
+            transform: translateX(5px);
+        }
+
+        /* Featured Post */
+        .featured-post {
+            grid-column: 1 / -1;
+            margin-bottom: 30px;
+        }
+
+        .featured-post .blog-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 768px) {
+            .featured-post .blog-post {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .featured-post .post-image {
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .featured-post .post-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-post .post-title {
+            font-size: 2.2rem;
+        }
+
+        /* Sidebar */
+        .blog-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .sidebar-widget {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .widget-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            position: relative;
+        }
+
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--orange);
+        }
+
+        /* Categories Widget */
+        .categories-list {
+            list-style: none;
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-gray);
+            transition: color 0.3s;
+        }
+
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-item:hover {
+            color: var(--orange);
+        }
+
+        .category-count {
+            background-color: var(--light-gray);
+            color: var(--gray);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        /* Recent Posts Widget */
+        .recent-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .recent-post {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .recent-post:last-child {
+            border-bottom: none;
+        }
+
+        .recent-post-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .recent-post-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .recent-post-date {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Tags Widget */
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: var(--light-gray);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background-color: var(--orange);
+            color: white;
+        }
+
+        /* Newsletter Widget */
+        .newsletter-widget {
+            background: linear-gradient(135deg, var(--dark-brown), #3d2f28);
+            color: white;
+        }
+
+        .newsletter-widget .widget-title {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .newsletter-widget .widget-title::after {
+            background-color: var(--orange);
+        }
+
+        .newsletter-widget p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .newsletter-btn {
+            background-color: var(--orange);
+            color: white;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #b35925;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+
+        .pagination-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 4px;
+            background-color: white;
+            border: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .pagination-btn.active {
+            background-color: var(--dark-brown);
+            color: white;
+            border-color: var(--dark-brown);
+        }
+
+        .pagination-btn:hover:not(.active) {
+            background-color: var(--light-gray);
+        }
+
+        .pagination-btn.pagination-prev,
+        .pagination-btn.pagination-next {
+            width: auto;
+            padding: 0 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--orange);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .featured-post .post-title {
+                font-size: 1.8rem;
+            }
+            
+            .post-title {
+                font-size: 1.5rem;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">BETMA<span>COFFEE</span></a>
+            
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="blog.html" class="nav-link active">Blog</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="cart-icon" id="cartIcon">
+                    <span>🛒</span>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">✕</button>
+        <nav class="mobile-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Brewing Stories</h1>
+            <p>Explore coffee recipes, brewing guides, origin stories, and industry insights from our team of coffee experts.</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Blog</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <div class="container">
+        <div class="blog-container">
+            <!-- Featured Post -->
+            <div class="featured-post">
+                <article class="blog-post">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <span class="post-category">Brewing Guide</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span>📅 June 12, 2023</span>
+                            <span>⏱️ 8 min read</span>
+                            <span>👁️ 1.2k views</span>
+                        </div>
+                        <h2 class="post-title">The Art of Perfect Pour Over: A Step-by-Step Guide</h2>
+                        <p class="post-excerpt">Master the delicate balance of water temperature, grind size, and pouring technique to create the perfect cup of pour over coffee. Our comprehensive guide covers everything from equipment selection to advanced brewing methods used by champion baristas.</p>
+                        <a href="pour-over-guide.html" class="read-more">Read Full Guide →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Blog Posts -->
+            <main class="blog-posts">
+                <!-- Post 1 -->
+                <article class="blog-post">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <span class="post-category">Origin Story</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span>📅 May 28, 2023</span>
+                            <span>⏱️ 6 min read</span>
+                            <span>👁️ 845 views</span>
+                        </div>
+                        <h2 class="post-title">Journey to Ethiopia: The Birthplace of Coffee</h2>
+                        <p class="post-excerpt">Follow our sourcing team as they explore the highlands of Ethiopia, where coffee was first discovered. Meet the farmers preserving ancient varieties and learn about the cultural significance of the coffee ceremony.</p>
+                        <a href="ethiopia-journey.html" class="read-more">Continue Reading →</a>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="blog-post">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <span class="post-category">Recipe</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span>📅 May 15, 2023</span>
+                            <span>⏱️ 5 min read</span>
+                            <span>👁️ 1.1k views</span>
+                        </div>
+                        <h2 class="post-title">Summer Cold Brew Recipes: 5 Refreshing Variations</h2>
+                        <p class="post-excerpt">Beat the heat with our collection of innovative cold brew recipes. From citrus-infused creations to creamy nitro-style preparations, discover how to elevate your cold coffee game this summer.</p>
+                        <a href="cold-brew-recipes.html" class="read-more">Continue Reading →</a>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="blog-post">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <span class="post-category">Sustainability</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span>📅 April 30, 2023</span>
+                            <span>⏱️ 7 min read</span>
+                            <span>👁️ 623 views</span>
+                        </div>
+                        <h2 class="post-title">Regenerative Agriculture: The Future of Coffee Farming</h2>
+                        <p class="post-excerpt">Explore how regenerative farming practices are transforming coffee agriculture, improving soil health, increasing biodiversity, and creating more resilient farming communities for future generations.</p>
+                        <a href="regenerative-agriculture.html" class="read-more">Continue Reading →</a>
+                    </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article class="blog-post">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <span class="post-category">Coffee Science</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span>📅 April 18, 2023</span>
+                            <span>⏱️ 9 min read</span>
+                            <span>👁️ 732 views</span>
+                        </div>
+                        <h2 class="post-title">Understanding Coffee Roast Profiles: From Light to Dark</h2>
+                        <p class="post-excerpt">Dive deep into the science of coffee roasting. Learn how different roast levels affect flavor, acidity, and body, and discover which roast profile best suits your taste preferences.</p>
+                        <a href="roast-profiles.html" class="read-more">Continue Reading →</a>
+                    </div>
+                </article>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="blog-sidebar">
+                <!-- Categories Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="categories-list">
+                        <li class="category-item">
+                            <a href="#">Brewing Guides</a>
+                            <span class="category-count">12</span>
+                        </li>
+                        <li class="category-item">
+                            <a href="#">Recipes</a>
+                            <span class="category-count">8</span>
+                        </li>
+                        <li class="category-item">
+                            <a href="#">Origin Stories</a>
+                            <span class="category-count">6</span>
+                        </li>
+                        <li class="category-item">
+                            <a href="#">Coffee Science</a>
+                            <span class="category-count">5</span>
+                        </li>
+                        <li class="category-item">
+                            <a href="#">Sustainability</a>
+                            <span class="category-count">4</span>
+                        </li>
+                        <li class="category-item">
+                            <a href="#">Industry News</a>
+                            <span class="category-count">7</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Recent Posts Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Recent Posts</h3>
+                    <div class="recent-posts">
+                        <div class="recent-post">
+                            <div class="recent-post-image" style="background-image: url('https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"></div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">Espresso Tasting: Developing Your Palate</a></h4>
+                                <div class="recent-post-date">June 5, 2023</div>
+                            </div>
+                        </div>
+                        <div class="recent-post">
+                            <div class="recent-post-image" style="background-image: url('https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"></div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">Home Barista Essentials: Must-Have Equipment</a></h4>
+                                <div class="recent-post-date">May 22, 2023</div>
+                            </div>
+                        </div>
+                        <div class="recent-post">
+                            <div class="recent-post-image" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"></div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">The Impact of Climate Change on Coffee Production</a></h4>
+                                <div class="recent-post-date">May 8, 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tags Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Popular Tags</h3>
+                    <div class="tags-cloud">
+                        <a href="#" class="tag">Pour Over</a>
+                        <a href="#" class="tag">Cold Brew</a>
+                        <a href="#" class="tag">Espresso</a>
+                        <a href="#" class="tag">Single Origin</a>
+                        <a href="#" class="tag">Brewing</a>
+                        <a href="#" class="tag">Sustainability</a>
+                        <a href="#" class="tag">Ethiopia</a>
+                        <a href="#" class="tag">Roasting</a>
+                        <a href="#" class="tag">Recipe</a>
+                        <a href="#" class="tag">Barista</a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Widget -->
+                <div class="sidebar-widget newsletter-widget">
+                    <h3 class="widget-title">Coffee Newsletter</h3>
+                    <p>Get the latest brewing tips, new recipes, and exclusive offers delivered to your inbox.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="pagination-btn pagination-prev">← Previous</button>
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <button class="pagination-btn pagination-next">Next →</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BETMA COFFEE</h3>
+                    <p>Artisanal coffee roasters specializing in sustainable single-origin beans from around the world.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <a href="#" class="social-icon">TW</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">Single Origin</a></li>
+                        <li><a href="shop.html">Blends</a></li>
+                        <li><a href="subscription.html">Subscription</a></li>
+                        <li><a href="shop.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="wholesale.html">Wholesale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="brewing-guides.html">Brewing Guides</a></li>
+                        <li><a href="sustainability.html">Sustainability</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 BETMA COFFEE. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.querySelector('.cart-count');
+        const newsletterForms = document.querySelectorAll('.newsletter-form');
+        const paginationButtons = document.querySelectorAll('.pagination-btn');
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Newsletter Form Submission
+        newsletterForms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = form.querySelector('input[type="email"]').value;
+                alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter.`);
+                form.reset();
+            });
+        });
+
+        // Pagination
+        paginationButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('active')) return;
+                
+                // Remove active class from all buttons
+                paginationButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button (if it's a number button)
+                if (!button.classList.contains('pagination-prev') && 
+                    !button.classList.contains('pagination-next')) {
+                    button.classList.add('active');
+                }
+                
+                // In a real implementation, this would load new content
+                console.log('Loading page:', button.textContent);
+            });
+        });
+
+        // Simple cart count for demo
+        let cartItemCount = 0;
+        cartCount.textContent = cartItemCount;
+
+        // Category filtering (simplified)
+        const categoryItems = document.querySelectorAll('.category-item');
+        categoryItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = item.querySelector('a').textContent;
+                console.log('Filtering by category:', category);
+                // In a real implementation, this would filter the blog posts
+            });
+        });
+
+        // Tag filtering
+        const tags = document.querySelectorAll('.tag');
+        tags.forEach(tag => {
+            tag.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tagName = tag.textContent;
+                console.log('Filtering by tag:', tagName);
+                // In a real implementation, this would filter the blog posts
+            });
+        });
+    </script>
+</body>
+</html>

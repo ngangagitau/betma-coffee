@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | BETMA COFFEE - Artisanal Coffee Roasters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --dark-brown: #2E241F;
+            --cream: #F7F3EE;
+            --orange: #D46A2E;
+            --green: #8AA28B;
+            --gray: #6B7280;
+            --light-gray: #E5E7EB;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-brown);
+            background-color: var(--cream);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--cream);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-brown);
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-desktop {
+            display: flex;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--orange);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--orange);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--orange);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--cream);
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            padding: 80px 20px 20px;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-nav .nav-link {
+            font-size: 18px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            font-size: 24px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(46, 36, 31, 0.7), rgba(46, 36, 31, 0.7)), url('https://images.unsplash.com/photo-1463797221720-6e5e6b0f6f67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .breadcrumb a {
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--orange);
+        }
+
+        .breadcrumb span {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Our Story Section */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .story-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .story-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .story-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        /* Values Section */
+        .values-section {
+            background-color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: var(--gray);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .team-member h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .team-member .role {
+            color: var(--orange);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .team-member p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Sourcing Section */
+        .sourcing-section {
+            background-color: var(--green);
+            color: white;
+        }
+
+        .sourcing-section .section-title h2,
+        .sourcing-section .section-title p {
+            color: white;
+        }
+
+        .sourcing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .sourcing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sourcing-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .sourcing-content p {
+            margin-bottom: 20px;
+        }
+
+        .sourcing-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(46, 36, 31, 0.8), rgba(46, 36, 31, 0.8)), url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b35925;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--dark-brown);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--orange);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .newsletter-btn {
+            background-color: var(--orange);
+            color: white;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 4px;
+                padding: 10px;
+            }
+            
+            .sourcing-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">BETMA<span>COFFEE</span></a>
+            
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="cart-icon" id="cartIcon">
+                    <span>🛒</span>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">✕</button>
+        <nav class="mobile-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="about.html" class="nav-link active">About</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Story</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>About</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="BETMA COFFEE founders in coffee farm">
+                </div>
+                <div class="story-content">
+                    <h2>From Farm to Cup</h2>
+                    <p>Founded in 2015, BETMA COFFEE began as a simple idea: to share exceptional coffee while building meaningful relationships with farmers and communities at origin.</p>
+                    <p>Our journey started when founders Maria and Ben Thompson traveled through Central America, discovering not just incredible coffee, but the passionate people who cultivate it. They witnessed firsthand the challenges farmers face and the difference direct trade could make.</p>
+                    <p>Today, we work directly with over 20 smallholder farms across 8 countries, ensuring fair prices, sustainable practices, and exceptional quality in every bag we roast.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Sustainable Sourcing</h3>
+                    <p>We build long-term partnerships with farmers who practice regenerative agriculture, ensuring environmental stewardship for future generations.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">⚖️</div>
+                    <h3>Fair Trade</h3>
+                    <p>We pay premium prices directly to farmers, often 25-30% above Fair Trade minimums, investing in community development and quality improvement.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🔥</div>
+                    <h3>Artisan Roasting</h3>
+                    <p>Our small-batch roasting approach highlights the unique characteristics of each origin, bringing out nuanced flavors and aromas.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Community Focus</h3>
+                    <p>We're committed to building coffee community through education, events, and supporting local organizations in our roasting cities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p>The passionate people behind BETMA COFFEE</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')"></div>
+                    <h3>Maria Thompson</h3>
+                    <div class="role">Co-Founder & Head Roaster</div>
+                    <p>Maria leads our roasting program with over 15 years of experience in specialty coffee. Her passion for perfecting roast profiles ensures every batch meets our exacting standards.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')"></div>
+                    <h3>Ben Thompson</h3>
+                    <div class="role">Co-Founder & Green Coffee Buyer</div>
+                    <p>Ben travels extensively to build relationships with our farming partners. His expertise in coffee quality and sustainable sourcing forms the foundation of our supply chain.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')"></div>
+                    <h3>Sarah Chen</h3>
+                    <div class="role">Director of Coffee Education</div>
+                    <p>Sarah develops our brewing guides and educational content. She's a certified Q Grader and leads customer workshops on coffee appreciation and brewing techniques.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')"></div>
+                    <h3>David Rodriguez</h3>
+                    <div class="role">Wholesale Manager</div>
+                    <p>David works with cafes and restaurants to develop custom coffee programs. His background as a barista champion helps him create exceptional coffee experiences for our partners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sourcing Section -->
+    <section class="section sourcing-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Sourcing Philosophy</h2>
+                <p>Building a better coffee future, one relationship at a time</p>
+            </div>
+            
+            <div class="sourcing-grid">
+                <div class="sourcing-content">
+                    <h2>Direct & Transparent</h2>
+                    <p>We believe in knowing exactly where our coffee comes from and who grows it. That's why we've built direct relationships with farmers, visiting origins multiple times each year.</p>
+                    <p>Our transparent pricing model means farmers receive premium payments that reflect quality and support community development projects like schools, healthcare, and environmental conservation.</p>
+                    <p>Through our Direct Impact Program, we've helped fund the planting of over 50,000 shade trees and supported education for 200+ children in coffee-growing communities.</p>
+                    
+                    <div class="sourcing-stats">
+                        <div class="stat">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Partner Farms</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Countries</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">125%</div>
+                            <div class="stat-label">Fair Trade Premium</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Coffee farmer in Ethiopia">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Experience the BETMA Difference</h2>
+            <p>Join our community of coffee lovers and taste the result of ethical sourcing, artisan roasting, and unwavering quality standards.</p>
+            <div class="btn-group">
+                <a href="shop.html" class="btn btn-primary">Shop Our Coffee</a>
+                <a href="wholesale.html" class="btn btn-secondary">Partner With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BETMA COFFEE</h3>
+                    <p>Artisanal coffee roasters specializing in sustainable single-origin beans from around the world.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <a href="#" class="social-icon">TW</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">Single Origin</a></li>
+                        <li><a href="shop.html">Blends</a></li>
+                        <li><a href="subscription.html">Subscription</a></li>
+                        <li><a href="shop.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="wholesale.html">Wholesale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for updates, promotions, and brewing tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                        <button type="submit" class="newsletter-btn">→</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 BETMA COFFEE. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.querySelector('.cart-count');
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Newsletter Form Submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('.newsletter-input').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter.`);
+            newsletterForm.reset();
+        });
+
+        // Simple cart count for demo (would normally come from cart state)
+        let cartItemCount = 0;
+        cartCount.textContent = cartItemCount;
+    </script>
+</body>
+</html>
