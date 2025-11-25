@@ -1142,10 +1142,12 @@
         // Mobile Menu Toggle
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.add('active');
+            overlay.classList.add('active');
         });
 
         closeMenu.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
         });
 
         // View Toggle (Grid/List)
@@ -1334,4 +1336,5 @@
         filterProducts();
     </script>
 </body>
+
 </html>
